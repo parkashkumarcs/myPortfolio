@@ -1,16 +1,15 @@
 import React from 'react';
-import '../Styles/Hero.css'; // Styles for Hero component
-import heroImage from '../assets/me.jpg'; // Replace with your image
-
-const Hero = () => {
+import '../Styles/About.css'; 
+import myImage from '../assets/me.jpg';
+const About = () => {
   return (
-    <section className="hero">
-      <div className="hero-content">
-        <h1 className="hero-title">
+    <section className="about">
+      <div className="about-content">
+        <h1 className="about-title">
           Hi, I'm <span className="highlight">Parkash Kumar</span>
         </h1>
-        <h2 className="hero-subtitle">A Passionate Frontend Developer</h2>
-        <p className="hero-description">
+        <h2 className="about-subtitle">A Passionate Frontend Developer</h2>
+        <p className="about-description">
           I am a Frontend Developer with 1 year of experience specializing in creating professional,
           responsive, and user-friendly websites and applications. My expertise lies in building fully
           functional and reusable components that bring ideas to life. I have worked on diverse projects,
@@ -18,8 +17,8 @@ const Hero = () => {
           dynamic and interactive user interfaces. Whether it’s developing sleek designs or optimizing
           for performance, I am passionate about delivering exceptional digital experiences.
         </p>
-        <h2 className="hero-subtitle">Let’s collaborate and build something amazing together!</h2>
-        <div className="hero-buttons">
+        <h2 className="about-subtitle">Let’s collaborate and build something amazing together!</h2>
+        <div className="about-buttons">
           <a href="#projects" className="btn primary-btn">
             View My Work
           </a>
@@ -28,12 +27,12 @@ const Hero = () => {
           </a>
         </div>
       </div>
-      <div className="hero-image-container">
-        <img src={heroImage} alt="Hero" className="hero-image" />
+      <div className="about-image-container">
+        <img src={myImage} alt="about" className="about-image" />
         <div className="diagonal-box"></div>
       </div>
     </section>
   );
 };
 
-export default Hero;
+export default About;

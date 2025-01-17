@@ -1,25 +1,26 @@
 import React from 'react';
-//import Navbar from './Components/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './Components/Sidebar';
-import Hero from './Components/Hero';
-//import About from './components/About';
-//import Projects from './components/Projects';
-//import Skills from './components/Skills';
-//import Contact from './components/Contact';
-//import Footer from './components/Footer';
+import Home from './Components/Home';
+import About from './Components/About';
+import Project from './Components/Project';
+// import Skills from './Components/Skills';
+// import Contact from './Components/Contact';
+
 
 function App() {
   return (
-    <div>
-      {/* <Sidebar/> */}
-      {/* <Navbar /> */}
-      <Hero />
-      {/* <About /> */}
-      {/* <Projects /> */}
-      {/* <Skills /> */}
-      {/* <Contact /> */}   
-      {/* <Footer /> */}
-    </div>
+    <Router>
+      <Sidebar />
+      <Routes>
+        {/* Home as the default route */}
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Project />} />
+        {/* <Route path="/skills" element={<Skills />} /> */}
+        {/* <Route path="/contact" element={<Contact />} /> */}
+      </Routes>
+    </Router>
   );
 }
 

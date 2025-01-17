@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import '../Styles/Sidebar.css'; // Separate file for styles
-import { FaBars, FaTimes, FaUser, FaProjectDiagram, FaTools, FaEnvelope } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import '../Styles/Sidebar.css';
+import { FaBars, FaTimes, FaUser, FaProjectDiagram, FaTools, FaEnvelope, FaHome } from 'react-icons/fa';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,37 +12,41 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar-container">
-      {/* Sidebar toggle button */}
       <div className="sidebar-toggle" onClick={toggleSidebar}>
         {isOpen ? <FaTimes /> : <FaBars />}
       </div>
 
-      {/* Sidebar Menu */}
       <div className={`sidebar ${isOpen ? 'open' : ''}`}>
         <ul className="sidebar-menu">
           <li>
-            <a href="#about">
-              <FaUser className="icon" />
-              About
-            </a>
+            <Link to="/" onClick={toggleSidebar}>
+              <FaHome className="icon" />
+              Home
+            </Link>
           </li>
           <li>
-            <a href="#projects">
+            <Link to="/about" onClick={toggleSidebar}>
+              <FaUser className="icon" />
+              About Me
+            </Link>
+          </li>
+          <li>
+            <Link to="/projects" onClick={toggleSidebar}>
               <FaProjectDiagram className="icon" />
               Projects
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#skills">
+            <Link to="/skills" onClick={toggleSidebar}>
               <FaTools className="icon" />
               Skills
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#contact">
+            <Link to="/contact" onClick={toggleSidebar}>
               <FaEnvelope className="icon" />
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

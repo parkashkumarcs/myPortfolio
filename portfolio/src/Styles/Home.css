@@ -1,0 +1,125 @@
+/* General container styling */
+.home-container {
+    padding: 20px;
+    background-color: #181220;
+}
+
+.home-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Card grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* More responsive column layout */
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* Card styles */
+.card {
+    background-color: #fff;
+    width: 300px;
+    height: 430px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    color: #333;
+    margin: 20px auto;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 5px 6px 6px rgb(7, 8, 8);
+    transform: scale(1.05);
+}
+
+.card-icon {
+    font-size: 1.5rem;
+    color: #007bff;
+      
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #15c77d;
+    padding: 5px;
+}
+
+.card-description {
+    font-size: 1rem;
+    color: #555;
+}
+.content-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: 150px;
+    gap: 5px;
+    margin: 10px 80px 0px;
+    padding: 5px;
+    /* border: 3px solid rebeccapurple; */
+    
+}
+.card-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+
+}
+
+.card-image-container:hover .card-image {
+    transform: scale(1.1);
+    filter: brightness(0.9);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .home-container {
+        margin-left: 0; /* Remove sidebar margin on smaller screens */
+    }
+
+    .home-title {
+        font-size: 2rem;
+    }
+
+    .card {
+        height: auto; /* Adjust height to content */
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    .card-description {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: 15px;
+    }
+
+    .home-title {
+        font-size: 1.75rem;
+    }
+}

@@ -6,7 +6,7 @@
     --font-family: 'Arial, sans-serif';
 }
 
-.hero {
+.about {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -16,37 +16,37 @@
     overflow: hidden;
 }
 
-.hero-content {
+.about-content {
     flex: 1;
     max-width: 600px;
     animation: fadeIn 0.5s ease-in-out;
 }
 
-.hero-title {
+.about-title {
     font-size: 3rem;
     font-weight: bold;
     color: var(--secondary-color);
     margin-bottom: 1rem;
 }
 
-.hero-title .highlight {
+.about-title .highlight {
     color: var(--primary-color);
 }
 
-.hero-subtitle {
+.about-subtitle {
     font-size: 1.5rem;
     color: var(--text-color);
     margin-bottom: 1rem;
 }
 
-.hero-description {
+.about-description {
     font-size: 1rem;
     color: var(--text-color);
     margin-bottom: 2rem;
     line-height: 1.6;
 }
 
-.hero-buttons {
+.about-buttons {
     display: flex;
     gap: 1rem;
 }
@@ -82,7 +82,7 @@
     transform: scale(1.05);
 }
 
-.hero-image-container {
+.about-image-container {
     flex: 1;
     max-width: 500px;
     display: flex;
@@ -91,7 +91,7 @@
     animation: slideIn 0.5s ease-in-out;
 }
 
-.hero-image {
+.about-image {
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -105,8 +105,8 @@
     height: 30px;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     background: linear-gradient(135deg, var(--primary-color) 50%, var(--accent-color) 50%);
-    border-radius: 48px; /* Rounded corners for the rectangle */
-    animation: colorAnimation 4s infinite;
+    border-radius: 48px;
+    animation: colorAnimation 1s infinite;
 }
 
 @keyframes colorAnimation {
@@ -144,16 +144,16 @@
 }
 
 @media (max-width: 768px) {
-    .hero {
+    .about {
         flex-direction: column;
         text-align: center;
     }
 
-    .hero-content {
+    .about-content {
         max-width: 100%;
     }
 
-    .hero-image-container {
+    .about-image-container {
         margin-top: 1rem;
     }
 }
