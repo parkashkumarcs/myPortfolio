@@ -1,0 +1,139 @@
+/* Sidebar.module.css */
+
+/* Reset styles */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f9; /* Light background for better contrast */
+}
+
+/* Sidebar Container */
+.sidebarContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Toggle Button */
+.sidebarToggle {
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient button */
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1100;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebarToggle:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #5c10b2, #206cd4);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Sidebar Styling */
+.sidebar {
+  height: 100vh;
+  width: 280px; /* Slightly wider for more spacious design */
+  background: linear-gradient(135deg, #1e1e2f, #2b2b45); /* Subtle gradient for depth */
+  position: fixed;
+  top: 0;
+  left: -280px; /* Hidden by default */
+  overflow: hidden;
+  transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 0.3s ease-in-out;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.6);
+}
+
+.sidebarOpen {
+  left: 0;
+  box-shadow: 6px 0 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Sidebar Menu */
+.sidebarMenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 70px; /* Adjusted for toggle button spacing */
+}
+
+.sidebarMenuItem {
+  padding: 15px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Softer border for modern feel */
+}
+
+.sidebarMenuItemLink {
+  color: #d1d1e0;
+  text-decoration: none;
+  font-size: 1.3rem; /* Larger font for readability */
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Consistent spacing between icon and text */
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+.icon {
+  font-size: 1.6rem;
+  color: #d1d1e0; /* Match text color */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebarMenuItemLink:hover,
+.sidebarMenuItemLinkActive {
+  background: linear-gradient(135deg, #575757, #6b6b8c); /* Gradient hover effect */
+  color: #fff;
+  border-radius: 8px; /* Rounded corners for hover state */
+  transform: translateX(10px); /* Subtle slide animation */
+}
+
+.sidebarMenuItemLink:hover .icon,
+.sidebarMenuItemLinkActive .icon {
+  color: #ffffff;
+  transform: rotate(20deg); /* Slight rotation for a playful effect */
+}
+
+/* Active Link Styling */
+.sidebarMenuItemLinkActive {
+  background: linear-gradient(135deg, #3a3a5a, #4b4b73);
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Sidebar Footer (Optional for extra polish) */
+.sidebarFooter {
+  margin-top: auto;
+  padding: 20px;
+  color: #d1d1e0;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .sidebarToggle {
+    top: 10px;
+    left: 10px;
+  }
+
+  .sidebarMenuItem {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+
+  .sidebar {
+    width: 240px; /* Narrower for smaller screens */
+    left: -240px;
+  }
+
+  .sidebarOpen {
+    left: 0;
+  }
+}

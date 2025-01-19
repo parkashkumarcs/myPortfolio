@@ -4,8 +4,8 @@ import Sidebar from './Components/Sidebar';
 import Home from './Components/Home';
 import About from './Components/About';
 import Project from './Components/Project';
-// import Skills from './Components/Skills';
-// import Contact from './Components/Contact';
+import Skills from './Components/Skills';
+import Contact from './Components/Contact';
 
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Project />} />
-        {/* <Route path="/skills" element={<Skills />} /> */}
-        {/* <Route path="/contact" element={<Contact />} /> */}
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );
