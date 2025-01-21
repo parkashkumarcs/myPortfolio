@@ -1,124 +1,112 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../Styles/Home.module.css'; // Updated import for CSS module
+import styles from '../Styles/Home.module.css'; 
 import { FaUser, FaProjectDiagram, FaTools, FaEnvelope } from 'react-icons/fa';
 
-// Importing images for each card
-import aboutImages1 from '../assets/certified.jpg';
-import aboutImages2 from '../assets/me.jpg';
-import aboutImages3 from '../assets/exp.jpg';
+// Import static images
+import certified from '../assets/certified.jpg';
+import me from '../assets/me.jpg';
+import exp from '../assets/exp.jpg';
 
-import projectImage1 from '../assets/project.jpg';
-import projectImage2 from '../assets/project2.jpg';
-import projectImage3 from '../assets/project3.jpg';
-import projectImage4 from '../assets/project4.jpg';
+import project1 from '../assets/project.jpg';
+import project2 from '../assets/project2.jpg';
+import project3 from '../assets/project3.jpg';
+import project4 from '../assets/project4.jpg';
 
-import skillsImage1 from '../assets/skills.jpg';
-import skillsImage2 from '../assets/skills2.jpg';
-import skillsImage3 from '../assets/skills3.jpg';
-import skillsImage4 from '../assets/project3.jpg';
+import skills1 from '../assets/skills.jpg';
+import skills2 from '../assets/skills2.jpg';
+import skills3 from '../assets/skills3.jpg';
 
-import contactImage1 from '../assets/contact.jpg';
-import contactImage2 from '../assets/contact2.jpg';
-import contactImage3 from '../assets/contact3.jpg';
-import contactImage4 from '../assets/contact4.jpg';
+import contact1 from '../assets/contact.jpg';
+import contact2 from '../assets/contact2.jpg';
+import contact3 from '../assets/contact3.jpg';
+import contact4 from '../assets/contact4.jpg';
 
-// Arrays for images
-const aboutImages = [aboutImages1, aboutImages2, aboutImages3];
-const projectImages = [projectImage1, projectImage2, projectImage3, projectImage4];
-const skillsImages = [skillsImage1, skillsImage2, skillsImage3, skillsImage4];
-const contactImages = [contactImage1, contactImage2, contactImage3, contactImage4];
+// Map icons dynamically
+const icons = {
+  FaUser: <FaUser />,
+  FaProjectDiagram: <FaProjectDiagram />,
+  FaTools: <FaTools />,
+  FaEnvelope: <FaEnvelope />,
+};
+
+// Image mapping for dynamic loading
+const imagesMap = {
+  'certified.jpg': certified,
+  'me.jpg': me,
+  'exp.jpg': exp,
+  'project.jpg': project1,
+  'project2.jpg': project2,
+  'project3.jpg': project3,
+  'project4.jpg': project4,
+  'skills.jpg': skills1,
+  'skills2.jpg': skills2,
+  'skills3.jpg': skills3,
+  'contact.jpg': contact1,
+  'contact2.jpg': contact2,
+  'contact3.jpg': contact3,
+  'contact4.jpg': contact4,
+};
 
 const Home = () => {
-  const [aboutImageIndex, setAboutImageIndex] = useState(0);
-  const [projectImageIndex, setProjectImageIndex] = useState(0);
-  const [skillsImageIndex, setSkillsImageIndex] = useState(0);
-  const [contactImageIndex, setContactImageIndex] = useState(0);
+  const [sections, setSections] = useState([]);
+  const [imageIndexes, setImageIndexes] = useState({});
 
   useEffect(() => {
-    // Function to update image index for each card
-    const updateImageIndex = () => {
-      setAboutImageIndex((prev) => (prev + 1) % aboutImages.length);
-      setProjectImageIndex((prev) => (prev + 1) % projectImages.length);
-      setSkillsImageIndex((prev) => (prev + 1) % skillsImages.length);
-      setContactImageIndex((prev) => (prev + 1) % contactImages.length);
+    // Fetch data from backend
+    const fetchHomeData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/home');
+        const data = await response.json();
+        setSections(data);
+
+        // Initialize index for each section to 0
+        const initialIndexes = {};
+        data.forEach((section) => {
+          initialIndexes[section.title] = 0;
+        });
+        setImageIndexes(initialIndexes);
+      } catch (error) {
+        console.error('Error fetching home data:', error);
+      }
     };
 
-    // Change images every 5 seconds
-    const interval = setInterval(updateImageIndex, 5000);
+    fetchHomeData();
 
-    // Cleanup the interval on component unmount
+    // Image rotation interval
+    const interval = setInterval(() => {
+      setImageIndexes((prevIndexes) =>
+        sections.reduce((newIndexes, section) => {
+          newIndexes[section.title] = (prevIndexes[section.title] + 1) % section.images.length;
+          return newIndexes;
+        }, {})
+      );
+    }, 5000);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [sections]);
 
   return (
     <div className={styles.homeContainer}>
       <h1 className={styles.homeTitle}>Welcome :)</h1>
       <div className={styles.cardGrid}>
-        {/* About Me Card */}
-        <Link to="/about" className={styles.card}>
-          <div className={styles.cardImageContainer}>
-            <img
-              src={aboutImages[aboutImageIndex]}
-              alt="About"
-              className={styles.cardImage}
-              loading="lazy"
-            />
-          </div>
-          <div className={styles.contentBox}>
-            <FaUser className={styles.cardIcon} />
-            <h2 className={styles.cardTitle}>About Me</h2>
-          </div>
-          <p className={styles.cardDescription}>Learn more about me and my journey.</p>
-        </Link>
-        {/* Projects Card */}
-        <Link to="/projects" className={styles.card}>
-          <div className={styles.cardImageContainer}>
-            <img
-              src={projectImages[projectImageIndex]}
-              alt="Projects"
-              className={styles.cardImage}
-              loading="lazy"
-            />
-          </div>
-          <div className={styles.contentBox}>
-            <FaProjectDiagram className={styles.cardIcon} />
-            <h2 className={styles.cardTitle}>Projects</h2>
-          </div>
-          <p className={styles.cardDescription}>Explore my completed and ongoing projects.</p>
-        </Link>
-        {/* Skills Card */}
-        <Link to="/skills" className={styles.card}>
-          <div className={styles.cardImageContainer}>
-            <img
-              src={skillsImages[skillsImageIndex]}
-              alt="Skills"
-              className={styles.cardImage}
-              loading="lazy"
-            />
-          </div>
-          <div className={styles.contentBox}>
-            <FaTools className={styles.cardIcon} />
-            <h2 className={styles.cardTitle}>Skills</h2>
-          </div>
-          <p className={styles.cardDescription}>Discover the tools and technologies I use.</p>
-        </Link>
-        {/* Contact Card */}
-        <Link to="/contact" className={styles.card}>
-          <div className={styles.cardImageContainer}>
-            <img
-              src={contactImages[contactImageIndex]}
-              alt="Contact"
-              className={styles.cardImage}
-              loading="lazy"
-            />
-          </div>
-          <div className={styles.contentBox}>
-            <FaEnvelope className={styles.cardIcon} />
-            <h2 className={styles.cardTitle}>Contact</h2>
-          </div>
-          <p className={styles.cardDescription}>Get in touch with me for collaborations or inquiries.</p>
-        </Link>
+        {sections.map((section) => (
+          <Link to={section.route} className={styles.card} key={section.id}>
+            <div className={styles.cardImageContainer}>
+              <img
+                src={imagesMap[section.images[imageIndexes[section.title]]]}
+                alt={section.title}
+                className={styles.cardImage}
+                loading="lazy"
+              />
+            </div>
+            <div className={styles.contentBox}>
+              <div className={styles.cardIcon}>{icons[section.icon]}</div>
+              <h2 className={styles.cardTitle}>{section.title}</h2>
+            </div>
+            <p className={styles.cardDescription}>{section.description}</p>
+          </Link>
+        ))}
       </div>
     </div>
   );
