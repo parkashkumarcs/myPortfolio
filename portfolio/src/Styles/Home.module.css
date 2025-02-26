@@ -1,11 +1,10 @@
-/* General container styling */
 :root{
     --text-color: #ffffff;
     --font-family: "Poppins", sans-serif;
 }
 .homeContainer {
     padding: 20px;
-    background-color: #e74412;
+    background-color: #4B0082;
 }
 
 .homeTitle {
@@ -16,11 +15,11 @@
     color: var(--text-color);
     margin-bottom: 3rem;
     position: relative;
-    background: linear-gradient(90deg, #f1f1f1, #6287ff); /* Subtle gradient text */
+    background: linear-gradient(90deg, #f1f1f1, #6287ff); 
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Gradient text effect */
-    letter-spacing: 1px; /* Professional spacing */
-    text-transform: uppercase; /* Adds a bold touch to titles */
+    -webkit-text-fill-color: transparent; 
+    letter-spacing: 1px; 
+    text-transform: uppercase; 
 }
 
 .homeTitle::after {
@@ -38,7 +37,7 @@
 }
 
 .homeTitle:hover::after {
-    width: 160px; /* Slight animation for hover effect */
+    width: 160px; 
 }
 
 
@@ -52,7 +51,7 @@
 
 /* Card styles */
 .card {
-    background-color: #ffe9e6;
+    background-color: #8B008B;
     width: 300px;
     height: 430px;
     border-radius: 8px;
@@ -78,13 +77,13 @@
 
 .cardTitle {
     font-size: 1.5rem;
-    color: #000000;
+    color: #ffffff;
     padding: 5px;
 }
 
 .cardDescription {
     font-size: 1rem;
-    color: #000000;
+    color: #ffffff;
 }
 
 .contentBox {
@@ -98,7 +97,6 @@
     padding: 5px;
 }
 
-/* Updated image container styles */
 .cardImageContainer {
     position: relative;
     width: 100%;
@@ -116,13 +114,38 @@
     transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
 }
 
-/* Hover effects for images */
 .cardImageContainer:hover .cardImage {
     transform: scale(1.15);
     filter: brightness(0.85);
 }
+/* Dots container */
+.dotsContainer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+  }
 
-/* Responsive adjustments */
+  .dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .dot:hover {
+    transform: scale(1.2);
+  }
+  
+  .activeDot {
+    background-color: #fff;
+  }
+  
 @media (max-width: 768px) {
     .homeContainer {
         margin-left: 0;

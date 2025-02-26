@@ -1,15 +1,15 @@
 :root {
-  --primary-color: #4caf50; /* Green for form and footer */
-  --secondary-color: #333; /* Dark text */
-  --text-color: #555; /* Light text */
-  --error-color: #e74c3c; /* Error red */
-  --background-color: #f9f9f9; /* Light background */
+  --primary-color: #4caf50; 
+  --secondary-color: #333; 
+  --text-color: #555;
+  --error-color: #e74c3c; 
+  --background-color: #f9f9f9; 
   --font-family: 'Poppins', sans-serif;
 }
 
 .contactSection {
   padding: 6rem 2rem;
-  background-color: #e74412;
+  background-color: #4B0082;
   text-align: center;
 }
 
@@ -18,7 +18,7 @@
   justify-content: center;
   align-items: center;
   min-height: 60vh;
-  margin-bottom: 3rem; /* Adds gap between form card and footer */
+  margin-bottom: 3rem; 
 }
 
 /* Form Styling */
@@ -33,7 +33,7 @@
   flex-direction: column;
   justify-content: center;
   animation: fadeIn 0.8s ease;
-  box-sizing: border-box; /* Ensure padding does not cause overflow */
+  box-sizing: border-box; 
 }
 
 
@@ -60,9 +60,9 @@ label {
 
 input,
 textarea {
-  width: 100%; /* Ensure inputs fit within the container */
-  max-width: 100%; /* Prevent overflowing */
-  box-sizing: border-box; /* Include padding and border in width calculation */
+  width: 100%; 
+  max-width: 100%; 
+  box-sizing: border-box;
   padding: 0.9rem;
   font-size: 1rem;
   border: 2px solid #ddd;
@@ -122,11 +122,10 @@ textarea {
   animation: slideIn 0.5s ease;
 }
 
-/* Footer Styling */
 .footer {
-  background: linear-gradient(90deg, #4caf50, #2e7d32); /* Gradient background for modern design */
+  background: linear-gradient(90deg, #8B008B, #8F00FF);
   color: #f9f9f9;
-  padding: 3rem 1rem; /* Increased padding for better spacing */
+  padding: 3rem 1rem; 
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -148,7 +147,7 @@ textarea {
 .footerContent {
   max-width: 900px;
   margin: 0 auto;
-  z-index: 1; /* Ensure content stays on top */
+  z-index: 1; 
 }
 
 .footerLinks {
@@ -162,7 +161,7 @@ textarea {
 }
 
 .footerLinks li {
-  font-size: 1.2rem; /* Increased size for better readability */
+  font-size: 1.2rem;
 }
 
 .footerLinks a {
@@ -187,12 +186,12 @@ textarea {
 }
 
 .footerLinks a:hover {
-  color: #c8e6c9; /* Light green hover effect */
-  transform: translateY(-3px); /* Subtle movement on hover */
+  color: #c8e6c9; 
+  transform: translateY(-3px); 
 }
 
 .footerLinks a:hover::before {
-  width: 100%; /* Underline animation on hover */
+  width: 100%;
 }
 
 .footerSocialIcons {
@@ -209,7 +208,7 @@ textarea {
 
 .footerSocialIcons a:hover {
   color: #a5d6a7;
-  transform: scale(1.2); /* Slight scaling effect on hover */
+  transform: scale(1.2);
 }
 
 /* Keyframes for animations */
@@ -262,7 +261,7 @@ textarea {
 
   input,
   textarea {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    font-size: 0.9rem; 
   }
 }
 
@@ -273,7 +272,7 @@ textarea {
 
   input,
   textarea {
-    padding: 0.7rem; /* Adjust padding for smaller screens */
+    padding: 0.7rem;
     font-size: 0.85rem;
   }
 }

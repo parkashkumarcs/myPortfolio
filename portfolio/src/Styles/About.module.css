@@ -1,122 +1,117 @@
 .about {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     justify-content: space-between;
-    padding: 2rem;
-    background-color: #e74412;
-    overflow: hidden;
+    align-items: center;
+    padding: 3rem 5%;
+    background-color: #4B0082;
+    animation: fadeIn 1s ease-out;
 }
 
 .aboutContent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.textContent {
     flex: 1;
-    max-width: 100%;
-    gap: 40px;
-    animation: fadeIn 0.5s ease-in-out;
+    max-width: 50%;
+    padding-right: 2rem;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out forwards;
+}
+.mainDescription{
+    color: rgb(209, 202, 202);
+    line-height: 1.6;
 }
 
 .aboutTitle {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: bold;
-    color: #000000;
+    color: #ffffff;
     margin-bottom: 1rem;
+    animation: fadeInUp 1.5s ease-out;
 }
 
 .highlight {
-    font-size: 2.8rem;
-    font-family: var(--font-family);
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: 3rem;
-    position: relative;
+    font-size: 3.2rem;
+    color: #4CAF50;
     background: linear-gradient(90deg, #f1f1f1, #6287ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 1px;
-}
-
-.highlight::after {
-    content: "";
-    position: absolute;
-    width: 120px;
-    height: 4px;
-    background: #9a5bff;
-    left: 50%;
-    bottom: -10px;
-    transform: translateX(-50%);
-    border-radius: 2px;
-    opacity: 0.7;
-    transition: width 0.3s ease-in-out;
-}
-
-.highlight:hover::after {
-    width: 160px;
+    animation: fadeInUp 1.5s ease-out;
 }
 
 .aboutItems {
-    max-width: 800px;
-    padding: 20px;
-    gap: 20px;
-    background-color: #e74412;
+    background: #fff;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
     border-radius: 8px;
-    margin-bottom: 2rem;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
-    animation: fadeIn 0.6s ease-in-out;
     overflow: hidden;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
 }
 
 .aboutItems::before {
     content: "";
     position: absolute;
     top: 0;
-    left: 0;
-    width: 0;
+    left: -100%;
+    width: 100%;
     height: 100%;
-    background-image: linear-gradient(90deg, rgba(192, 197, 193, 0.5) 0, rgba(236, 87, 1, 0.219) 100%);
-    transition: width 0.5s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease-out;
 }
 
 .aboutItems:hover::before {
-    width: 100%;
+    left: 0;
 }
 
 .aboutSubtitle {
-    font-size: 1.8rem;
-    color: #fff;
+    font-size: 2rem;
+    color: #333;
     margin-bottom: 1rem;
+    animation: fadeInUp 1.5s ease-out;
 }
 
 .aboutDescription {
-    font-size: 1.1rem;
-    color: #fff;
-    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1.5rem;
     line-height: 1.6;
+    animation: fadeInUp 1.5s ease-out;
 }
 
 .aboutList {
     list-style-type: disc;
     padding-left: 2rem;
-    color: #ffffff;
+    animation: fadeInUp 1.5s ease-out;
 }
 
 .aboutButtons {
     display: flex;
     gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: fadeInUp 2s ease-out forwards;
 }
 
 .btn {
-    padding: 0.8rem 1.5rem;
+    padding: 0.8rem 2rem;
     font-size: 1rem;
     border-radius: 5px;
     text-decoration: none;
     text-align: center;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .primaryBtn {
-    background-color: #4caf50;
+    background-color: #4CAF50;
     color: #fff;
 }
 
@@ -127,61 +122,60 @@
 
 .secondaryBtn {
     background-color: #fff;
-    color: #4caf50;
-    border: 2px solid #4caf50;
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
 }
 
 .secondaryBtn:hover {
-    background-color: #4caf50;
+    background-color: #4CAF50;
     color: #fff;
     transform: scale(1.05);
 }
 
-.aboutImageContainer {
+.imageContainer {
+    flex: 1;
+    max-width: 45%;
     position: relative;
-    top: 15px;
-    right: 10px;
-    width: 40%;
-    max-width: 400px;
-    height: auto;
-    animation: slideIn 0.5s ease-in-out;
-    z-index: 1;
+    padding-left: 2rem;
+    opacity: 0;
+    animation: fadeInRight 1.5s ease-out forwards;
 }
 
 .aboutImage {
     width: 100%;
     height: auto;
-    object-fit: cover;
     border-radius: 8px;
+    object-fit: cover;
+}
+.actionSubtitle{
+    font-size: 2.2rem;
+    color: #4CAF50;
+    background: linear-gradient(90deg, #f1f1f1, #6287ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+    animation: fadeInUp 1.5s ease-out;
 }
 
-.diagonalBox {
-    position: relative;
-    width: 100%;
-    height: 30px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    background: linear-gradient(135deg, #4caf50 50%, #61db67 50%);
-    border-radius: 48px;
-    animation: colorAnimation 1s infinite;
-}
-
-/* Responsive design */
 @media (max-width: 1024px) {
-    .about {
+    .aboutContent {
         flex-direction: column;
         align-items: center;
-        padding: 1.5rem;
     }
 
-    .aboutContent {
-        text-align: center;
+    .textContent {
         max-width: 100%;
+        text-align: center;
+        padding-right: 0;
     }
 
-    .aboutImageContainer {
-        width: 60%;
-        max-width: 300px;
-        margin: 2rem 0;
+    .imageContainer {
+        max-width: 80%;
+        margin-top: 2rem;
+    }
+
+    .aboutImage {
+        border-radius: 50%;
     }
 }
 
@@ -194,25 +188,20 @@
         font-size: 2rem;
     }
 
+    .aboutSubtitle {
+        font-size: 1.8rem;
+    }
+
     .aboutDescription {
         font-size: 1rem;
     }
 
-    .aboutSubtitle {
-        font-size: 1.5rem;
-    }
-
     .btn {
         font-size: 0.9rem;
-        padding: 0.6rem 1.2rem;
     }
 }
 
 @media (max-width: 480px) {
-    .aboutContent {
-        padding: 1rem;
-    }
-
     .aboutTitle {
         font-size: 2rem;
     }
@@ -221,63 +210,46 @@
         font-size: 1.8rem;
     }
 
-    .aboutImageContainer {
-        width: 80%;
-        max-width: 250px;
+    .aboutItems {
+        padding: 1rem;
+    }
+
+    .aboutDescription {
+        font-size: 0.9rem;
     }
 
     .btn {
-        padding: 0.5rem 1rem;
         font-size: 0.85rem;
+        padding: 0.6rem 1.2rem;
     }
 }
 
-/* Button hover animations */
-.btn:hover {
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-}
+/* The following is animation definitions of each */
 
-.secondaryBtn:hover {
-    border-color: #fff;
-}
-
-/* Image container hover effect */
-.aboutImageContainer:hover .aboutImage {
-    transform: scale(1.03);
-    transition: transform 0.3s ease-in-out;
-}
-
-/* List styling for better readability */
-.aboutList li {
-    margin-bottom: 0.5rem;
-}
-
-/* Highlight hover interaction */
-.highlight:hover {
-    background: linear-gradient(90deg, #6287ff, #f1f1f1);
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-/* Smooth transitions */
-* {
-    transition: all 0.3s ease;
-}
-
-/* Animations for extra visual appeal */
-@keyframes colorAnimation {
-    0%, 100% {
-        background: linear-gradient(135deg, #4caf50 50%, #e74412 50%);
-    }
-    50% {
-        background: linear-gradient(135deg, #e74412 50%, #4caf50 50%);
-    }
-}
-
-@keyframes slideIn {
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
     }
     to {
         opacity: 1;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../Styles/Project.module.css'; // Import CSS Module
+import styles from '../Styles/Project.module.css';
 
 import projectImage1 from '../assets/project.jpg';
 import projectImage2 from '../assets/project2.jpg';
@@ -49,7 +49,6 @@ const projects = [
     techStack: ["React.js", "Node.js", "CSS"],
     images: [projectImage1, projectImage2, projectImage3, projectImage4],
   },
-  // Add additional projects here
 ];
 
 const Project = () => {
@@ -67,8 +66,10 @@ const Project = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleCardClick = (projectId) => {
-    document.getElementById(projectId)?.scrollIntoView({ behavior: "smooth" });
+  const handleCircleClick = (projectIndex, imageIndex) => {
+    setCurrentImageIndex((prevIndexes) =>
+      prevIndexes.map((index, i) => (i === projectIndex ? imageIndex : index))
+    );
   };
 
   return (
@@ -79,7 +80,11 @@ const Project = () => {
           <div
             key={project.id}
             className={styles.projectCard}
-            onClick={() => handleCardClick(project.id)}
+            onClick={() =>
+              document.getElementById(project.id)?.scrollIntoView({
+                behavior: "smooth",
+              })
+            }
           >
             <div className={styles.projectImageContainer}>
               <img
@@ -87,10 +92,26 @@ const Project = () => {
                 alt={project.title}
                 className={styles.projectImage}
               />
+              <div className={styles.circlesContainer}>
+                {project.images.map((_, idx) => (
+                  <span
+                    key={idx}
+                    className={`${styles.circle} ${
+                      currentImageIndex[i] === idx ? styles.activeCircle : ""
+                    }`}
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent card click
+                      handleCircleClick(i, idx);
+                    }}
+                  ></span>
+                ))}
+              </div>
             </div>
             <div className={styles.projectInfo}>
               <h3 className={styles.projectTitle}>{project.title}</h3>
-              <p className={styles.projectDescription}>{project.description}</p>
+              <p className={styles.projectDescription}>
+                {project.description}
+              </p>
               <ul className={styles.projectTechStack}>
                 {project.techStack.map((tech, idx) => (
                   <li key={idx}>{tech}</li>

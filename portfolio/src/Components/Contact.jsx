@@ -28,7 +28,7 @@ const Contact = () => {
       setIsSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
       setErrors({});
-      // Handle form submission (e.g., send to backend or email service)
+      //It will handle form submission (e.g., send to backend or email service)
     } else {
       setErrors(formErrors);
     }

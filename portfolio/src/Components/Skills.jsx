@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Styles/Skills.module.css"; // Updated import for CSS module
+import styles from "../Styles/Skills.module.css";
 import {
   FaHtml5,
   FaCss3Alt,

@@ -2,24 +2,26 @@
   --font-family: 'Arial, sans-serif';
 }
 
+/* --- SECTION: PROJECTS --- */
 .projectsSection {
   padding: 4rem 2rem;
-  background-color: #e74412;
+  background-color: #4B0082;
 }
 
+/* Title Responsiveness */
 .secTitle {
   text-align: center;
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 5vw, 2.8rem);
   font-family: var(--font-family);
   font-weight: 700;
   color: var(--text-color);
   margin-bottom: 3rem;
   position: relative;
-  background: linear-gradient(90deg, #f1f1f1, #6287ff); /* Subtle gradient text */
+  background: linear-gradient(90deg, #f1f1f1, #6287ff);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* Gradient text effect */
-  letter-spacing: 1px; /* Professional spacing */
-  text-transform: uppercase; /* Adds a bold touch to titles */
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .secTitle::after {
@@ -37,15 +39,18 @@
 }
 
 .secTitle:hover::after {
-  width: 160px; /* Slight animation for hover effect */
+  width: 160px;
 }
 
+/* --- GRID LAYOUT (Responsive) --- */
 .projectsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  padding: 0 1rem;
 }
 
+/* --- PROJECT CARD --- */
 .projectCard {
   position: relative;
   overflow: hidden;
@@ -53,7 +58,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #ffe9e6;
+  background-color: #8B008B;
 }
 
 .projectCard:hover {
@@ -61,6 +66,7 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Image Container */
 .projectImageContainer {
   width: 100%;
   height: 200px;
@@ -78,6 +84,7 @@
   transform: scale(1.1);
 }
 
+/* --- PROJECT INFO --- */
 .projectInfo {
   padding: 1rem;
   text-align: center;
@@ -85,16 +92,17 @@
 
 .projectTitle {
   font-size: 1.5rem;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   margin-bottom: 0.5rem;
 }
 
 .projectDescription {
   font-size: 1rem;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   margin-bottom: 1rem;
 }
 
+/* Tech Stack List */
 .projectTechStack {
   list-style: none;
   padding: 0;
@@ -112,18 +120,19 @@
   border-radius: 5px;
 }
 
+/* --- PROJECT DETAILS --- */
 .projectDetails {
   margin-top: 4rem;
   padding: 2rem;
   color: white;
-  background-color: #e74412;
+  background-color: #8F00FF;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 }
 
-/* Transparent animation effect from left to right on hover */
+/* Transparent animation effect */
 .projectDetails::before {
   content: "";
   position: absolute;
@@ -131,14 +140,81 @@
   left: 0;
   width: 0;
   height: 100%;
-  background-image: linear-gradient(
-        90deg, 
-        rgba(0, 255, 34, 0.5) 0, 
-        rgba(236, 87, 1, 0.219) 100%
-        );
+  background-image: linear-gradient(90deg, rgba(124, 70, 134, 0.205) 0, rgba(112, 91, 78, 0.219) 100%);
   transition: width 0.5s ease-in-out;
 }
 
 .projectDetails:hover::before {
   width: 100%;
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .projectImageContainer {
+    height: 180px;
+  }
+
+  .projectTitle {
+    font-size: 1.2rem;
+  }
+
+  .projectDescription {
+    font-size: 0.9rem;
+  }
+
+  .projectTechStack li {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .projectDetails {
+    padding: 1.5rem;
+  }
+}
+
+/* --- IMAGE CIRCLE INDICATORS --- */
+.circlesContainer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 1;
+}
+
+/* Individual circle styling */
+.circle {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.circle:hover {
+  transform: scale(1.2);
+}
+
+.activeCircle {
+  background-color: #9a5bff;
+}
+
+/* RESPONSIVE CIRCLES */
+@media (max-width: 768px) {
+  .circlesContainer {
+    bottom: 5px;
+    gap: 0.3rem;
+  }
+
+  .circle {
+    width: 8px;
+    height: 8px;
+  }
 }

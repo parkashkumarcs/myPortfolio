@@ -1,112 +1,121 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import styles from '../Styles/Home.module.css'; 
-import { FaUser, FaProjectDiagram, FaTools, FaEnvelope } from 'react-icons/fa';
+import React, { useState, useEffect, useCallback, useReducer, useMemo } from "react";
+import { Link } from "react-router-dom";
+import styles from "../Styles/Home.module.css";
+import { FaUser, FaProjectDiagram, FaTools, FaEnvelope } from "react-icons/fa";
 
-// Import static images
-import certified from '../assets/certified.jpg';
-import me from '../assets/me.jpg';
-import exp from '../assets/exp.jpg';
+import aboutImages1 from "../assets/certified.jpg";
+import aboutImages2 from "../assets/me.jpg";
+import aboutImages3 from "../assets/exp.jpg";
 
-import project1 from '../assets/project.jpg';
-import project2 from '../assets/project2.jpg';
-import project3 from '../assets/project3.jpg';
-import project4 from '../assets/project4.jpg';
+import projectImage1 from "../assets/project.jpg";
+import projectImage2 from "../assets/project2.jpg";
+import projectImage3 from "../assets/project3.jpg";
+import projectImage4 from "../assets/project4.jpg";
 
-import skills1 from '../assets/skills.jpg';
-import skills2 from '../assets/skills2.jpg';
-import skills3 from '../assets/skills3.jpg';
+import skillsImage1 from "../assets/skills.jpg";
+import skillsImage2 from "../assets/skills2.jpg";
+import skillsImage3 from "../assets/skills3.jpg";
+import skillsImage4 from "../assets/project3.jpg";
 
-import contact1 from '../assets/contact.jpg';
-import contact2 from '../assets/contact2.jpg';
-import contact3 from '../assets/contact3.jpg';
-import contact4 from '../assets/contact4.jpg';
+import contactImage1 from "../assets/contact.jpg";
+import contactImage2 from "../assets/contact2.jpg";
+import contactImage3 from "../assets/contact3.jpg";
+import contactImage4 from "../assets/contact4.jpg";
 
-// Map icons dynamically
-const icons = {
-  FaUser: <FaUser />,
-  FaProjectDiagram: <FaProjectDiagram />,
-  FaTools: <FaTools />,
-  FaEnvelope: <FaEnvelope />,
+const images = {
+  about: [aboutImages1, aboutImages2, aboutImages3],
+  project: [projectImage1, projectImage2, projectImage3, projectImage4],
+  skills: [skillsImage1, skillsImage2, skillsImage3, skillsImage4],
+  contact: [contactImage1, contactImage2, contactImage3, contactImage4],
 };
 
-// Image mapping for dynamic loading
-const imagesMap = {
-  'certified.jpg': certified,
-  'me.jpg': me,
-  'exp.jpg': exp,
-  'project.jpg': project1,
-  'project2.jpg': project2,
-  'project3.jpg': project3,
-  'project4.jpg': project4,
-  'skills.jpg': skills1,
-  'skills2.jpg': skills2,
-  'skills3.jpg': skills3,
-  'contact.jpg': contact1,
-  'contact2.jpg': contact2,
-  'contact3.jpg': contact3,
-  'contact4.jpg': contact4,
-};
+const imageReducer = (state, action) => ({
+  ...state,
+  [action.category]: (state[action.category] + 1) % images[action.category].length,
+});
 
 const Home = () => {
-  const [sections, setSections] = useState([]);
-  const [imageIndexes, setImageIndexes] = useState({});
+  // Using a single reducer for state management
+  const [imageIndex, dispatch] = useReducer(imageReducer, {
+    about: 0,
+    project: 0,
+    skills: 0,
+    contact: 0,
+  });
 
   useEffect(() => {
-    // Fetch data from backend
-    const fetchHomeData = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/home');
-        const data = await response.json();
-        setSections(data);
-
-        // Initialize index for each section to 0
-        const initialIndexes = {};
-        data.forEach((section) => {
-          initialIndexes[section.title] = 0;
-        });
-        setImageIndexes(initialIndexes);
-      } catch (error) {
-        console.error('Error fetching home data:', error);
-      }
-    };
-
-    fetchHomeData();
-
-    // Image rotation interval
     const interval = setInterval(() => {
-      setImageIndexes((prevIndexes) =>
-        sections.reduce((newIndexes, section) => {
-          newIndexes[section.title] = (prevIndexes[section.title] + 1) % section.images.length;
-          return newIndexes;
-        }, {})
-      );
+      Object.keys(images).forEach((category) => {
+        dispatch({ category });
+      });
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [sections]);
+  }, []);
+
+  // This is function to handle image click
+  const handleImageClick = useCallback((category, index) => {
+    dispatch({ category, newIndex: index });
+  }, []);
+
+  // Following is memoize the rendering of dots to prevent unnecessary re-renders
+  const renderDots = useCallback(
+    (category) => (
+      <div className={styles.dotsContainer}>
+        {images[category].map((_, index) => (
+          <span
+            key={index}
+            className={`${styles.dot} ${index === imageIndex[category] ? styles.activeDot : ""}`}
+            onClick={() => handleImageClick(category, index)}
+          />
+        ))}
+      </div>
+    ),
+    [imageIndex, handleImageClick]
+  );
+
+  // Below the grid of cards for performance improvements
+  const cards = useMemo(
+    () =>
+      ["about", "project", "skills", "contact"].map((category, i) => {
+        const icons = [FaUser, FaProjectDiagram, FaTools, FaEnvelope];
+        const titles = ["About Me", "Projects", "Skills", "Contact"];
+        const descriptions = [
+          "Learn more about me and my journey.",
+          "Explore my completed and ongoing projects.",
+          "Discover the tools and technologies I use.",
+          "Get in touch with me for collaborations or inquiries.",
+        ];
+
+        const Icon = icons[i];
+
+        return (
+          <Link to={`/${category}`} className={styles.card} key={category}>
+            <div className={styles.cardImageContainer}>
+              <img
+                src={images[category][imageIndex[category]]}
+                alt={titles[i]}
+                className={styles.cardImage}
+                loading="lazy"
+              />
+              {renderDots(category)}
+            </div>
+            <div className={styles.contentBox}>
+              <Icon className={styles.cardIcon} />
+              <h2 className={styles.cardTitle}>{titles[i]}</h2>
+            </div>
+            <p className={styles.cardDescription}>{descriptions[i]}</p>
+          </Link>
+        );
+      }),
+    [imageIndex, renderDots]
+  );
 
   return (
     <div className={styles.homeContainer}>
       <h1 className={styles.homeTitle}>Welcome :)</h1>
       <div className={styles.cardGrid}>
-        {sections.map((section) => (
-          <Link to={section.route} className={styles.card} key={section.id}>
-            <div className={styles.cardImageContainer}>
-              <img
-                src={imagesMap[section.images[imageIndexes[section.title]]]}
-                alt={section.title}
-                className={styles.cardImage}
-                loading="lazy"
-              />
-            </div>
-            <div className={styles.contentBox}>
-              <div className={styles.cardIcon}>{icons[section.icon]}</div>
-              <h2 className={styles.cardTitle}>{section.title}</h2>
-            </div>
-            <p className={styles.cardDescription}>{section.description}</p>
-          </Link>
-        ))}
+        {cards}
       </div>
     </div>
   );
