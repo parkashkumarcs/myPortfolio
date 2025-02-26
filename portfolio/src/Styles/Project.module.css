@@ -58,7 +58,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #8B008B;
+  background-color: #ffffff;
 }
 
 .projectCard:hover {
@@ -92,13 +92,13 @@
 
 .projectTitle {
   font-size: 1.5rem;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   margin-bottom: 0.5rem;
 }
 
 .projectDescription {
   font-size: 1rem;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   margin-bottom: 1rem;
 }
 
@@ -114,8 +114,8 @@
 
 .projectTechStack li {
   font-size: 0.9rem;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #000000;
+  color: #ffffff;
   padding: 0.3rem 0.7rem;
   border-radius: 5px;
 }
@@ -124,8 +124,8 @@
 .projectDetails {
   margin-top: 4rem;
   padding: 2rem;
-  color: white;
-  background-color: #8F00FF;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -140,7 +140,7 @@
   left: 0;
   width: 0;
   height: 100%;
-  background-image: linear-gradient(90deg, rgba(124, 70, 134, 0.205) 0, rgba(112, 91, 78, 0.219) 100%);
+  background-image: linear-gradient(90deg, rgba(163, 163, 163, 0.205) 0, rgba(56, 37, 37, 0.219) 100%);
   transition: width 0.5s ease-in-out;
 }
 
@@ -192,7 +192,7 @@
 .circle {
   width: 10px;
   height: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;

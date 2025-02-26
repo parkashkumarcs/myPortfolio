@@ -40,7 +40,7 @@ const Sidebar = () => {
           </li>
           <li className={styles.sidebarMenuItem}>
             <Link
-              to="/projects"
+              to="/project"
               onClick={toggleSidebar}
               className={styles.sidebarMenuItemLink}
             >

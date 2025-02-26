@@ -91,7 +91,7 @@ const About = () => {
             <a href="#projects" className={`${styles.btn} ${styles.primaryBtn}`}>
               View My Work
             </a>
-            <a href="/resume.pdf" className={`${styles.btn} ${styles.secondaryBtn}`} target="_blank" rel="noopener noreferrer">
+            <a href="/Resume.pdf" className={`${styles.btn} ${styles.secondaryBtn}`} target="_blank" rel="noopener noreferrer">
               Download Resume
             </a>
           </div>
